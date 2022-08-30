@@ -9,7 +9,7 @@ print("Hello, welcome to your EC2 Random Name Generator!")
 name = input("What is your name?\n")
 print(("Thank you. Nice to meet you, ") + (name.capitalize()) + ("."))
 
-#get the users department name
+#get the users department name to see if it is approved
 dept = input("Do you work in Accounting, Marketing, or FinOps?\n").upper()
 
 #user needs to be in an approved department
