@@ -1,4 +1,4 @@
-#EC2 Random Name Generator
+#Your EC2 Random Name Generator
 
 import string
 import time
@@ -51,4 +51,4 @@ for _ in range(n):
     custom_id = str(''.join([random.choice(string.ascii_letters + string.digits) for instnumb in range(10)]))
     print('{}-{}'.format(dept[0 : N], custom_id))
     
-print(("Thanks for using the Random Name Generator, ") + (name.capitalize()) + (". See you next time."))
+print(("Thanks for using the Random Name Generator, ") + (name.capitalize()) + (". See you next time!"))
