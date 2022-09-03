@@ -42,7 +42,7 @@ while True:
     else:
         break
     
-#random names will be generated
+#random names will be generated now
 
 n = instnumb
 N = 3
