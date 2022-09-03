@@ -1,31 +1,54 @@
-#EC2 + Boto + Python : you can use Boto3 to create/configure/and manage AWS services
-#You are tasked with creating a list using Python that curates unique EC2 names that users can attach to instances. Python scripts should [allow users to input how many EC2 instances they want names for and output the same amount of names.] 
-#Also, [allow users to input the name of their department that is used with the unique name]
-#Then, [Generate random characters that will be included in the unique name]
+#Your EC2 Random Name Generator
 
-#import boto3
-#s3 = boto3.resource('s3')
-import random
 import string
-from time import sleep
+import time
+import random
 
-#create list of EC2 unique names
-aws_dept = []
-aws_dept = ["accounting", "marketing", "finops"]
-ec2_name= int(len(input("Insert the amount of EC2 instances preferred:")))
+greetings = ['Hello', 'Hi', 'Hey', 'Howdy', 'Hola']
 
+#greet your user and ask their name
+value = random.choice(greetings)
+print(value + ', User!')
+print("Welcome to your EC2 Random Name Generator!") 
+name = input("What is your name?\n")
+print(("Thank you. Nice to meet you, ") + (name.capitalize()) + ("."))
 
+#get the users department name to see if it is approved
+dept = input("Do you work in Accounting, Marketing, or FinOps?\n").upper()
 
-sleep(3)
+#user needs to be in an approved department
+while True:
+    try:
+        list = ["ACCOUNTING", "MARKETING", "FINOPS"]
+        if dept not in list:
+            raise ValueError
+        break
+    except ValueError:
+        print("Access Denied")
+        exit()
+    else: 
+        print("Great, let's get started.")
+        
+#get the number of instances needed by the user
+while True:
+    try:
+        instnumb = int(input("How many names are you needing today? "))
+        print("Great! We will get you " + str(instnumb) + (" random instance names now!"))
+        print("Here is your list, prepare to copy:")
+        time.sleep(1.5)
+    except ValueError:
+        print("Numbers between 1-5 only. Please try again.")
+        continue
+    else:
+        break
+    
+#random names will be generated
 
-aws_ec2_name = input("what is your dept name?")
-print(input)
+n = instnumb
+N = 3
 
-sleep(3)
-letters= (string.ascii_letters+string.digits)
-unique = ''.join(random.sample(letters,5))
-#print(unique)
-#below function gives you an unique EC2 name with a random generated departmet
-result = (aws_dept)
-aws_ec2_name= (unique)
-print(random.choice(aws_dept), unique)
+for _ in range(n):
+    custom_id = str(''.join([random.choice(string.ascii_letters + string.digits) for instnumb in range(10)]))
+    print('{}-{}'.format(dept[0 : N], custom_id))
+    
+print(("Thanks for using the Random Name Generator, ") + (name.capitalize()) + (". See you next time!"))
